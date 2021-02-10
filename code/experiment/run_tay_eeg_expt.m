@@ -1,30 +1,57 @@
 function run_tay_eeg_expt
+%%
+% TAY Experiment Launcher Function
+% ================================
+%
+% Usage:
+%        This function should be called from the 
+%        'tay-eeg/code/experiment' folder
+% 
+%        To run, simply type 'run_tay_eeg_expt' on the matlab
+%        prompt, and follow the GUI instructions. 
+%
+
+%%
 
 clc
 close all   
 clear all
-[~, uid] = unix('whoami');
-switch uid(1:end-1)
-    case 'ifp-b-082\labor'
-       root = 'D:\COMPI';
-    case 'desktop-pllks1m\daniel'
-        root = 'C:\Users\Danie\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms';
-    case 'daniel-hp\daniel'
-        root = 'C:\Users\Daniel\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms';
-    case 'desktop-ctoao6k\compi'
-        root = 'C:\Users\compi\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms';
-    case 'drea'
-        root = '/Users/drea/Documents/CAMH/TAY/EEG';
-    otherwise
-        % JG_MOD
-        root = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
-end
 
-cd(root);
-addpath(genpath(fullfile(root,'GUI','GUI_GUIDE')));
+%[~, uid] = unix('whoami');
+%switch uid(1:end-1)
+%    case 'ifp-b-082\labor'
+%       root = 'D:\COMPI';
+%    case 'desktop-pllks1m\daniel'
+%        root = 'C:\Users\Danie\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms';
+%    case 'daniel-hp\daniel'
+%        root = 'C:\Users\Daniel\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms';
+%    case 'desktop-ctoao6k\compi'
+%        root = 'C:\Users\compi\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms';
+%    case 'drea'
+%        root = '/Users/drea/Documents/CAMH/TAY/EEG';
+%    otherwise
+%        % JG_MOD
+%        root = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
+%end
 
+expt_folder = pwd;
 
-addpath('C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\Toolboxes\BioSemiUSBtrigger-master');
+eeg_folder = fullfile(expt_folder, 'EEG');
+mmn_folder = fullfile(expt_folder, 'MMN');
+toolboxes_folder = fullfile(expt_folder, 'toolboxes');
+
+%cd(root);
+%addpath(genpath(fullfile(root,'GUI','GUI_GUIDE')));
+addpath(genpath(fullfile(eeg_folder,'GUI','GUI_GUIDE')));
+
+%addpath('C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\Toolboxes\BioSemiUSBtrigger-master');
+addpath(fullfile(toolboxes_folder, 'BioSemiUSBtrigger-master'));
+
+cd(fullfile(toolboxes_folder, 'Psychtoolbox'))
+initializePsychToolBox
+
+%cd(root);
+cd(eeg_folder);
 
 %% Get User data
 ui = DH_GUI_GUIDE();
