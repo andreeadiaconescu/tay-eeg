@@ -1,0 +1,395 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="3224557368" file="C:\Users\danie\Dropbox\EEG_IOIO\paradigms\GUI\DH_COMPI_GUI.prj" location="C:\Users\danie\Dropbox\EEG_IOIO\paradigms\GUI" name="DH_COMPI_GUI" target="target.mlapps" target-name="Package App">
+    <param.appname>DH_COMPI_GUI</param.appname>
+    <param.authnamewatermark>Daniel Hauke</param.authnamewatermark>
+    <param.email>daniel.hauke@gmx.net</param.email>
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary>COMPI Study Userinterface</param.summary>
+    <param.description />
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms>
+      <item>win64</item>
+    </param.platforms>
+    <param.output>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\GUI</param.output>
+    <param.guid>cf97728d-65aa-4694-8903-fa846b84469c</param.guid>
+    <unset>
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.description />
+      <param.screenshot />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\DH_COMPI_GUI.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgdrawsprite.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgflip.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgfont.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgfreesprite.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgloadarray.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgloadbmp.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgloadlib.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgmakesprite.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgopen.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgopenmovie.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgpencol.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgplaymovie.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgrect.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgrotatesprite.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgscale.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgsetsprite.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgshut.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cgshutmovie.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\checkdisplay.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\checkkeyboard.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\checkserial.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\clearkeys.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\clearserialbytes.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\CogCapture.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\CogInput.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\CogProcess.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\CogSerial.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cogsleep.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\CogSound.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\cogstd.mexw64</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\config_device.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\config_display.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\config_keyboard.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\config_log.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\config_serial.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\default_arg.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\drawpict.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\getkeydown.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\getserialbytes.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\loadpict.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\logkeys.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\logserialbytes.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\logstring.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\readkeys.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\readserialbytes.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\saveresults.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\start_cogent.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\stop_cogent.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\time.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\wait.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\waitkey.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\waitkeydown.m</file>
+      <file>C:\Program Files\MATLAB\Cogent2000\Toolbox\waitserialbyte.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\DrawFormattedText.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\GetMouse.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\HideCursor.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\KbCheck.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\KbName.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\KbWait.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\LoadPsychHID.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MachAbsoluteTimeClockFrequency.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Datapixx.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\GetSecs.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\IOPort.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\moglcore.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\PsychHID.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\PsychPortAudio.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Screen.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\WaitSecs.mexw64</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\psychlasterror.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\psychrethrow.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\SetMouse.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychBasic\ShowCursor.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychContributed\ple.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychFiles\PsychtoolboxConfigDir.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\AddImageUndistortionToGLOperator.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\AddToGLOperator.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\BitsPlusPlus.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\CountSlotsInGLOperator.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\CreateDisplayWarp.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\CreateGLOperator.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\CreatePseudoGrayLUT.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeed16BPCFixed.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeed16BPCFloat.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeed32BPCFloat.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedDualPass.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedDualWindowOutput.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedFastBackingStore.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedFastOffscreenWindows.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedHalfHeightWindow.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedHalfWidthWindow.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedImageProcessing.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedMultiPass.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedOtherStreamInput.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedOutputConversion.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedRetinaResolution.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedTripleWidthWindow.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychNeedTwiceWidthWindow.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\kPsychUse32BPCFloatAsap.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychColorCorrection.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychHelperCreateARGB2101010RemapCLUT.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychHelperCreateGenericLuminanceToRGBA16MaxLUT.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychHelperCreateGenericLuminanceToRGBA8LUT.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychHelperCreateRemapCLUT.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychHelperCreateRGB111110RemapCLUTAMDDCE8.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychHelperCreateRGB111110RemapCLUTOldAMD.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychImaging.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\PsychVideoSwitcher.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychGLImageProcessing\SetCompressedStereoSideBySideParameters.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\BitsPlusToolbox\bitsEncodeDIO.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\BitsPlusToolbox\bitsGoggles.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\BitsPlusToolbox\BitsPlusDIO2Matrix.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\BrightSideDisplay\BrightSideCore.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\BrightSideDisplay\BrightSideHDR.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\DatapixxToolbox\DatapixxBasic\PsychDataPixx.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\FindSerialPort.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\GetKeyboardIndices.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\GetKeypadIndices.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\GetMouseIndices.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\PsychGPURasterizerOffsets.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\PsychGPUTestAndTweakGammaTables.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychHardware\PsychRTBox.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychJava\PsychJavaSwingCleanup.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychJava\psychusejava.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychObsolete\IsOS9.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychObsolete\IsWindows.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\AssertGLSL.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\AssertMex.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\AssertOpenGL.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\AssertOSX.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\BlackIndex.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\Is64Bit.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\IsGLES.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\IsLinux.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\IsOctave.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\IsOSX.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\IsWayland.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\IsWin.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\LoadIdentityClut.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\OSName.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\PsychDefaultSetup.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\PsychGPUControl.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\PsychNumel.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\PsychtoolboxRoot.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\RestoreCluts.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\SaveIdentityClut.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\sca.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\streq.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\WhiteIndex.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOneliners\WrapString.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\LoadGLSLProgramFromFiles.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\LoadShaderFromFile.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\core\InitializeMatlabOpenGL.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\core\mor.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glActiveTexture.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glAttachShader.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glBegin.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glBindTexture.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glCallList.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glColor3ub.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glColor4f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glColorMask.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glCompileShader.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glCreateProgram.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glCreateShader.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glDisable.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glDisableClientState.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glDrawArrays.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glDrawPixels.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glEnable.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glEnableClientState.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glEnd.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glEndList.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glEvalMesh2.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGenLists.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGenTextures.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGetError.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGetIntegerv.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGetString.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGetTexLevelParameteriv.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glGetUniformLocation.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glIsList.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glLinkProgram.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glLoadIdentity.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glMap2d.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glMapGrid2d.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glMatrixMode.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glMultMatrixf.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glNewList.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glOrthof.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glPointSize.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glPopAttrib.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glPopMatrix.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glPushAttrib.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glPushMatrix.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glRasterPos2f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glRasterPos2i.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glRotatef.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glShaderSource.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTexCoord2f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTexCoordPointer.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTexImage2D.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTexImage3D.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTexParameteri.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTexSubImage2D.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glTranslatef.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\gluErrorString.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniform1f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniform1i.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniform2f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniform3f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniform3fv.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniformMatrix3fv.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUniformMatrix4fv.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\gluOrtho2D.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glUseProgram.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glVertex2f.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glVertex2i.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\glVertexPointer.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychOpenGL\MOGL\wrap\moglsingle.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\MachGetPriorityFlavor.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\MachGetPriorityMex.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\MachSetPriorityMex.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\MachSetStandardPriority.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\MachSetTimeConstraintPriority.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\MaxPriority.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychPriority\Priority.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\CenterRect.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\CenterRectOnPointd.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\ClipRect.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\OffsetRect.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectBottom.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectCenter.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectCenterd.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectHeight.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectLeft.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectRight.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectTop.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\RectWidth.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\ScaleRect.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychRects\SetRect.m</file>
+      <file>C:\Program Files\MATLAB\Psychtoolbox\PsychSound\InitializePsychSound.m</file>
+      <file>C:\Users\danie\Dropbox\DMPAD_dcm\code\toolboxes\spm12\external\fieldtrip\external\stats\range.m</file>
+      <file>${PROJECT_ROOT}\DH_COMPI_launch_task.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\io64.mexw64</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\computeCorrectness.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\computePayout.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configureDecliningBars.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configureDesign.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configurePracticeStimuli.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configureProgressBars.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configureStimuli.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configureTaskDisplay.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\configureTaskKeyboard.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\declineBars.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispBlock.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispDecision.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispITI.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\displayPracticeInstructionsPart2.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispProbe.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispSession.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispStart.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispStimulus.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispTarget.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\dispTrial.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\drawDcBars.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\drawFeedback.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\drawFixation.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\drawProgressBar.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\drawStimulus.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\drawTarget.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\load_SOC.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\loadVideos.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\loadVideosPractice.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\probe_MC.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\reset_screen.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\save_SOC.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\lib\wait2.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\SLadv_practice.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\IOIO\SLadv_task.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\exp_MMN_scanner.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\exp_MMN_scanner_instructions_with_tone_test.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\createAuditoryStimuli.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\createMMN.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\createVisualStimuli.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\drawVisualTrial.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\initializeCogent.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\initializePsychToolBox.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\initializeSounds.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\setupScreen.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\MMN\lib\setupSession.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\Rest\COMPI_Rest.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\Rest\COMPI_Rest_practice_DH.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\auxiliary\compute_stimulus_location.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\auxiliary\compute_titration.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_exp.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_fixCross.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_input_scheme.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_instructions.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_instructions_practice.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_log_dpars.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_log_trial.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_pars.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_recording_system_EEG.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_recording_system_fMRI.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_recording_system_none.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_stimuli.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_titration.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\init\init_workspace.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_check_keyboard.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_check_rb.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_check_rb_eeg.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_clear_buffer_keyboard.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_clear_buffer_rb.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_clear_buffer_rb_eeg.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_wait_keyboard.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_wait_rb.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\input_scheme\input_wait_rb_eeg.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\instructions_practice.txt</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases\prssi_wm_phase0.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases\prssi_wm_phase1.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases\prssi_wm_phase2.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases\prssi_wm_phase3.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases\prssi_wm_phase4.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases\prssi_wm_phase5.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases_practice\compass_wm_practice_phase1.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases_practice\compass_wm_practice_phase2.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases_practice\compass_wm_practice_phase3.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\phases_practice\compass_wm_practice_phase4.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\wm_practice.m</file>
+      <file>C:\Users\danie\Dropbox\EEG_IOIO\paradigms\WM\wm_task.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\danie\Dropbox\EEG_IOIO\paradigms" name="GUI" optional="false">C:\Users\danie\Dropbox\EEG_IOIO\paradigms\GUI</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2017a</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.2</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
