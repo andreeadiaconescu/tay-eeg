@@ -54,31 +54,34 @@ end
 session.hand = hand;
 
 %% set paths
-switch OS
-    case 'win'
-        [~, uid] = unix('whoami');
-        switch uid(1:end-1)
-            case 'ifp-b-082\labor'
-                session.expPath  = 'D:\COMPI\MMN';
-            case 'desktop-pllks1m\daniel'
-                session.expPath = 'C:\Users\Danie\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms\MMN';
-            case 'daniel-hp\daniel'
-                session.expPath = 'C:\Users\Daniel\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms\MMN';
-            case 'desktop-ctoao6k\compi'
-                session.expPath = 'C:\Users\compi\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms\MMN';
-            case 'drea'
-                session.expPath = '/Users/drea/Documents/CAMH/TAY/EEG';
-            otherwise
-                % JG_MOD
-                session.expPath = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
-        end
-        addpath('cogent2000v1.32\Toolbox');
-    case 'lin'
-        session.expPath = '/home/laew/prj/prssi/exp/lab/MMN';
-        addpath('cogent2000v1.32/Toolbox');
-    case 'mac'
-        session.expPath = '/Users/drea/Dropbox/EEG_IOIO/paradigms/MMN';
-end
+%switch OS
+%    case 'win'
+%        [~, uid] = unix('whoami');
+%        switch uid(1:end-1)
+%            case 'ifp-b-082\labor'
+%                session.expPath  = 'D:\COMPI\MMN';
+%            case 'desktop-pllks1m\daniel'
+%                session.expPath = 'C:\Users\Danie\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms\MMN';
+%            case 'daniel-hp\daniel'
+%                session.expPath = 'C:\Users\Daniel\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms\MMN';
+%            case 'desktop-ctoao6k\compi'
+%                session.expPath = 'C:\Users\compi\Dropbox\EEG_IOIO\COMPI\COMPI_paradigms\MMN';
+%            case 'drea'
+%                session.expPath = '/Users/drea/Documents/CAMH/TAY/EEG';
+%            otherwise
+%                % JG_MOD
+%                session.expPath = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
+%        end
+%        addpath('cogent2000v1.32\Toolbox');
+%    case 'lin'
+%        session.expPath = '/home/laew/prj/prssi/exp/lab/MMN';
+%        addpath('cogent2000v1.32/Toolbox');
+%    case 'mac'
+%        session.expPath = '/Users/drea/Dropbox/EEG_IOIO/paradigms/MMN';
+%end
+
+
+session.expPath = '..\MMN';
 
 %% set file names
 session.tone1 = 'tone1_c1_263_61Hz_70ms_duration_5ms_fadeInOut.wav';
