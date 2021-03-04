@@ -66,6 +66,15 @@ audios = createAuditoryStimuli(session);
 audios = initializeSounds(audios, MMN);
 
 
+% JG_ADD
+cedrus_handle = CedrusResponseBox('Open', 'COM6');
+
+% JG_ADD
+MMN.responses.cedrus = {}; % collecting all cedrus response box data, in 
+                           % case we need to modify timing and event
+                           % definitions at analysis stage
+
+
 %% ---------------------- start presentation -------------------------- %%
 
 Screen('TextSize', visuals.window, visuals.instrSize);
@@ -78,7 +87,11 @@ Screen('Flip', visuals.window);
 %wait2(2000);
 
 %wait for the scanner and save the starting time
-[~,t] = waitkeydown(inf);
+%[~,t] = waitkeydown(inf); % JG_MOD
+% JG_ADD - wait for cedrus button press
+blah = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+t = evt.rawtime; 
 
 if scanner_mode == 3
     io64(ioObj,address,MMN.triggers.start);            
@@ -100,9 +113,14 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.trainingContinue, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+% waitkeydown(inf);  % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf);
 %clearserialbytes(MMN.scanner.boxport);
+
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 
 % left opening
 DrawFormattedText(visuals.window, visuals.training02, 'center', 100, screen.black);
@@ -111,9 +129,20 @@ Screen('FrameRect', visuals.window, visuals.openCol, visuals.openLeftCoords, vis
 DrawFormattedText(visuals.window, visuals.trainingLeftpress, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf,MMN.keys.left);
+% waitkeydown(inf,MMN.keys.left); % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+
+% JG_ADD - only continue upon a left button press on cedrus
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+buttonID = 'blah';
+while ~strcmp(buttonID, 'left')
+    cedrus_evt = CedrusResponseBox('GetButtons', cedrus_handle);
+    if ~isempty(cedrus_evt)
+        buttonID = cedrus_evt.buttonID;
+    end
+end
+
 
 % right opening
 DrawFormattedText(visuals.window, visuals.training03, 'center', 100, screen.black);
@@ -122,9 +151,24 @@ Screen('FrameRect', visuals.window, visuals.openCol, visuals.openRightCoords, vi
 DrawFormattedText(visuals.window, visuals.trainingRightpress, 'center', 1000, screen.black);
  
 Screen('Flip', visuals.window);
-waitkeydown(inf,MMN.keys.right);
+
+
+%waitkeydown(inf,MMN.keys.right); % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+
+% JG_ADD - only continue upon a left button press on cedrus
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+buttonID = 'blah';
+while ~strcmp(buttonID, 'right')
+    cedrus_evt = CedrusResponseBox('GetButtons', cedrus_handle);
+    if ~isempty(cedrus_evt)
+        buttonID = cedrus_evt.buttonID;
+    end
+end
+
+
+
 
 % explain
 DrawFormattedText(visuals.window, visuals.training04, 'center', 100, screen.black);
@@ -132,9 +176,13 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.trainingContinue, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+%waitkeydown(inf); % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 
 % present some openings
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
@@ -177,18 +225,26 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.trainingContinue, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+% waitkeydown(inf);  % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 
 DrawFormattedText(visuals.window, visuals.training06, 'center', 100, screen.black);
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
 DrawFormattedText(visuals.window, visuals.trainingContinue, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+% waitkeydown(inf); % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 
 %% ---------------------- training -------------------------- %%
 
@@ -197,9 +253,13 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.trainingStart, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+% waitkeydown(inf); % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 
 idx_resp = 1;
 clearkeys;
@@ -217,9 +277,42 @@ for trial = 1: length(MMN.stimuli.audSequence) - 1
 
     wait2(MMN.times.rest(trial));                                           % wait until ISI is over
     
-   % Record responses
-    readkeys;
-    [k, t]   = getkeydown([MMN.keys.left,MMN.keys.right,MMN.keys.escape]);
+    
+    % JG_MOD
+    % Record responses
+    %readkeys;
+    %[k, t]   = getkeydown([MMN.keys.left,MMN.keys.right,MMN.keys.escape]);
+    
+    % JG_ADD
+    
+    % Initialize these vars to avoid error lower down
+    k = [];  t = [];    
+    % While loop to pull all cedrus responses since last full
+    cedrus_evt = CedrusResponseBox('GetButtons', cedrus_handle);
+    while ~isempty(cedrus_evt)
+
+        % compile all cedrus responses for the record
+        MMN.responses.cedrus{end+1} = cedrus_evt;
+        
+        % note: if multiple responses (including button press/release), 
+        % this will only record the last one. But all cedrus events info
+        % is kept in MMN.responses.cedrus.
+        k = cedrus_evt.raw; % left = 112, right = 113
+        t = cedrus_evt.rawtime;
+        
+        cedrus_evt = CedrusResponseBox('GetButtons', cedrus_handle);
+        
+    end
+    % now clear out cedrus responses
+    % (this should be redundant after above while loop)
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+
+    
+    
+    
+    
+    
+    
     
     if ~isempty(k)
         if any(k == MMN.keys.escape)
@@ -248,7 +341,10 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.trainingContinue, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+% waitkeydown(inf); % JG_MOD
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
 
 
 %% ---------------------- tone test -------------------------- %%
@@ -294,9 +390,13 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.trainingContinue, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-waitkeydown(inf);
+% waitkeydown(inf); % JG_MOD
 %[~, ~] = waitserialbyte(MMN.scanner.boxport, inf); 
 %clearserialbytes(MMN.scanner.boxport); 
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 
 % end of script: questions and wait for last button press
 DrawFormattedText(visuals.window, visuals.trainingEnd, 'center', 100, screen.black);
@@ -304,7 +404,14 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 DrawFormattedText(visuals.window, visuals.pressText, 'center', 1000, screen.black);
 Screen('Flip', visuals.window);
 
-[~, t] = waitkeydown(inf);
+% [~, t] = waitkeydown(inf); % JG_MOD
+% JG_ADD - wait for cedrus button press
+ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+t = evt.rawtime; 
+
+
+
 %[~, t] = waitserialbyte(MMN.scanner.boxport, inf);
 MMN.stopScreen.GetSecs = GetSecs;
 MMN.stopScreen.Cogent = t(1);
@@ -313,6 +420,12 @@ MMN.stopScreen.Cogent = t(1);
 MMN.responses.dummy = MMN.responses.keys == MMN.keys.right;
 MMN.responses.dummy = MMN.responses.dummy + (MMN.responses.keys == MMN.keys.left)*2;
 
+
+% JG_ADD - HACKY!
+outdir = fullfile(pwd,fileparts(session.baseName));
+if exist(outdir) ~=7
+    mkdir(outdir)
+end
 
 % security save at this point
 save(session.baseName, 'MMN');
