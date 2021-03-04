@@ -40,15 +40,25 @@ eeg_folder = fullfile(expt_folder, 'EEG');
 mmn_folder = fullfile(expt_folder, 'MMN');
 toolboxes_folder = fullfile(expt_folder, 'toolboxes');
 
+addpath(genpath(mmn_folder))
+
 %cd(root);
 %addpath(genpath(fullfile(root,'GUI','GUI_GUIDE')));
+addpath(genpath(eeg_folder))
 addpath(genpath(fullfile(eeg_folder,'GUI','GUI_GUIDE')));
 
 %addpath('C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\Toolboxes\BioSemiUSBtrigger-master');
 addpath(fullfile(toolboxes_folder, 'BioSemiUSBtrigger-master'));
 
-cd(fullfile(toolboxes_folder, 'Psychtoolbox'))
-initializePsychToolBox
+addpath(genpath(fullfile(toolboxes_folder, 'cogent2000v1.32')));
+
+
+resetup_psychtoolbox = 0;
+if resetup_psychtoolbox == 1
+    cd(fullfile(toolboxes_folder, 'Psychtoolbox'))
+    SetupPsychtoolbox;
+end
+
 
 %cd(root);
 cd(eeg_folder);
@@ -148,7 +158,8 @@ end
 
 
 %%
-cd(root)
+%cd(root)
+cd(expt_folder)
 clear ui out ans root scanner_mode
 
 
