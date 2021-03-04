@@ -76,8 +76,12 @@ audios = initializeSounds(audios, MMN);
 
 
 % JG_ADD
-cedrus_handle = CedrusResponseBox('Open', 'COM5');
+cedrus_handle = CedrusResponseBox('Open', 'COM6');
 
+% JG_ADD
+MMN.responses.cedrus = {}; % collecting all cedrus response box data, in 
+                           % case we need to modify timing and event
+                           % definitions at analysis stage
 
 
 %% ---------------------- start presentation -------------------------- %%
@@ -194,18 +198,34 @@ for trial = 1:length(MMN.stimuli.audSequence) - 1
     
     wait2(MMN.times.rest(trial));                                           % wait until ISI is over
     
+    % JG_MOD
     % Record responses
-    readkeys;
-    [k, t]   = getkeydown([MMN.keys.left,MMN.keys.right,MMN.keys.escape]);
+    %readkeys;
+    %[k, t]   = getkeydown([MMN.keys.left,MMN.keys.right,MMN.keys.escape]);
     
     % JG_ADD
+    
+    % Initialize these vars to avoid error lower down
+    k = [];  t = [];    
+    % While loop to pull all cedrus responses since last full
     cedrus_evt = CedrusResponseBox('GetButtons', cedrus_handle);
-    if ~isempty(cedrus_evt)
+    while ~isempty(cedrus_evt)
+
+        % compile all cedrus responses for the record
+        MMN.responses.cedrus{end+1} = cedrus_evt;
+        
+        % note: if multiple responses (including button press/release), 
+        % this will only record the last one. But all cedrus events info
+        % is kept in MMN.responses.cedrus.
         k = cedrus_evt.raw; % left = 112, right = 113
         t = cedrus_evt.rawtime;
+        
+        cedrus_evt = CedrusResponseBox('GetButtons', cedrus_handle);
+        
     end
-    % [ is this the right place to put this? ]
-    blah = CedrusResponseBox('FlushEvents', cedrus_handle);
+    % now clear out cedrus responses
+    % (this should be redundant after above while loop)
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
 
     
     
@@ -247,6 +267,20 @@ if isempty(MMN.responses.times )
     MMN.responses.keys      = NaN;
 end
 
+% JG_ADD 
+disp('')
+disp('')
+disp('session basename')
+disp(session.baseName)
+disp('cwd')
+disp(pwd)
+
+% JG_ADD - HACKY!
+outdir = fullfile(pwd,fileparts(session.baseName));
+if exist(outdir) ~=7
+    mkdir(outdir)
+end
+
 % security save at this point
 save(session.baseName, 'MMN');
 
@@ -278,7 +312,20 @@ MMN.stopScreen.Cogent   = time; % this is cogent time
 DrawFormattedText(visuals.window, visuals.endText, 'center', 'center', screen.black);
 Screen('Flip', visuals.window);
 
+
 % save all data in workspace
+
+disp('session basename')
+disp(session.baseName)
+disp('cwd')
+disp(pwd)
+
+% JG_ADD - HACKY!
+outdir = fullfile(pwd,fileparts(session.baseName));
+if exist(outdir) ~=7
+    mkdir(outdir)
+end
+
 save(session.baseName, 'MMN');
 
 %% ---------------------- shut down ------------------------ %%
