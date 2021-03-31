@@ -38,6 +38,7 @@ expt_folder = pwd;
 
 eeg_folder = fullfile(expt_folder, 'EEG');
 mmn_folder = fullfile(expt_folder, 'MMN');
+rest_folder = fullfile(expt_folder, 'Rest');
 toolboxes_folder = fullfile(expt_folder, 'toolboxes');
 
 addpath(genpath(mmn_folder))
@@ -45,7 +46,10 @@ addpath(genpath(mmn_folder))
 %cd(root);
 %addpath(genpath(fullfile(root,'GUI','GUI_GUIDE')));
 addpath(genpath(eeg_folder))
+
 addpath(genpath(fullfile(eeg_folder,'GUI','GUI_GUIDE')));
+
+addpath(genpath(rest_folder))
 
 %addpath('C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\Toolboxes\BioSemiUSBtrigger-master');
 addpath(fullfile(toolboxes_folder, 'BioSemiUSBtrigger-master'));
@@ -150,11 +154,16 @@ switch ui.task
         
         switch ui.session
             case 'practice'
-                COMPI_Rest_practice_DH(scanner_mode);
+                %COMPI_Rest_practice_DH(scanner_mode);     % JG_MOD
+                COMPI_Rest_practice_DH_eng(scanner_mode);
+
             case 'task'
-                COMPI_Rest_DH(ui.subject_ID,scanner_mode);
-        end
+                %COMPI_Rest_DH(ui.subject_ID,scanner_mode);  % JG_MOD
+                COMPI_Rest_DH_eng(ui.subject_ID,scanner_mode);
+    end
+ 
 end
+
 
 
 %%
