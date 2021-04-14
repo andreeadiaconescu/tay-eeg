@@ -11,6 +11,12 @@ end
 
 
 
+% JG_ADD
+cedrus_handle = CedrusResponseBox('Open', 'COM6');
+
+
+
+
 %% Intialize EEG triggers if necessary
 if scanner_mode == 3
     %ioObj = io64;
@@ -142,11 +148,26 @@ start_text = sprintf(['Welcome to the first experiment.\n\n\n',...
 DrawFormattedText(window, start_text, 'center', 'center', white);
 Screen('Flip', window);
 
+
 if scanner_mode == 1
-    waitkeydown(inf,[28,29,30,31]);
+
+    %waitkeydown(inf,[28,29,30,31]); %JG_MOD
+
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 else
-    waitkeydown(inf);
+
+    %waitkeydown(inf); % JG_MOD
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 end
+
+
+
 
 %% Wait to start screen
 switch scanner_mode
@@ -170,8 +191,13 @@ switch scanner_mode
         waitkeydown(inf,32); %scanner trigger is 32
         rest_data.when_start = GetSecs;
     case 3 % EEG
-        waitkeydown(inf);
-        
+       
+        %waitkeydown(inf); % JG_MOD
+        % JG_ADD - wait for cedrus button press
+        ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+        evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
+
         % TRIGGER start experiment
         %io64(ioObj,address,1);   %output command
         sp.sendTrigger(1);

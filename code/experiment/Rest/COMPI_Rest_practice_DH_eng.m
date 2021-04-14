@@ -38,6 +38,14 @@ PsychPortAudio('RunMode', pahandle, runMode);
 PsychPortAudio('FillBuffer', pahandle, buffer(2));
 
 
+
+
+% JG_ADD
+cedrus_handle = CedrusResponseBox('Open', 'COM6');
+
+
+
+
 %% ---------------------- set up screen -------------------------- %%
 screens = Screen('Screens');                                                % get screen numbers
 screenNumber = max(screens);                                                % draw to external screen
@@ -79,7 +87,7 @@ start_cogent;
 
 startText = sprintf(['Welcome to the first experiment.\n\n\n',...
 	             'In this experiment, you will be asked to \n\n',...
-                     'open and close eyes regularly. \n\n\',...
+                     'open and close eyes regularly. \n\n',...
 		     'Please try to move as \n\n',...
 		     'little as possible. If you \n\n',...
 		     'absolutely have to move, then \n\n',...
@@ -90,11 +98,26 @@ startText = sprintf(['Welcome to the first experiment.\n\n\n',...
 DrawFormattedText(window, startText, 'center', 'center', white);
 Screen('Flip', window);
 
+
 if scanner_mode == 1
-    waitkeydown(inf,[28,29,30,31]);
+
+    %waitkeydown(inf,[28,29,30,31]); %JG_MOD
+
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 else
-    waitkeydown(inf);
+
+    %waitkeydown(inf); % JG_MOD
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 end
+
+
+
 
 %startText = sprintf(['Bleiben Sie bitte die ganze Zeit wach. \n\n',...
 %                     'Waehrend Sie die Augen geschlossen haben, \n\n',...
@@ -108,11 +131,25 @@ startText = sprintf(['Please stay awake all the time.\n\n',...
 DrawFormattedText(window, startText, 'center', 'center', white);
 Screen('Flip', window);
 
+
 if scanner_mode == 1
-    waitkeydown(inf,[28,29,30,31]);
+
+    %waitkeydown(inf,[28,29,30,31]); %JG_MOD
+
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 else
-    waitkeydown(inf);
+
+    %waitkeydown(inf); % JG_MOD
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 end
+
+
 
 
 
@@ -136,11 +173,25 @@ startText = sprintf(['Please CLOSE your eyes when you\n\n',...
 DrawFormattedText(window, startText, 'center', 'center', white);
 Screen('Flip', window);
 
+
 if scanner_mode == 1
-  waitkeydown(inf,[28,29,30,31]);
+
+    %waitkeydown(inf,[28,29,30,31]); %JG_MOD
+
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 else
-    waitkeydown(inf);
+
+    %waitkeydown(inf); % JG_MOD
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 end
+
+
 
 %% Instruction continued
 %startText = sprintf(['Bitte, teilen Sie uns mit, wenn Sie die \n\n',...
@@ -155,11 +206,27 @@ startText = sprintf(['Please, let us know if you \n\n',...
 
 DrawFormattedText(window, startText, 'center', 'center', white);
 Screen('Flip', window);
+
 if scanner_mode == 1
-    waitkeydown(inf,[28,29,30,31]);
+
+    %waitkeydown(inf,[28,29,30,31]); %JG_MOD
+
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 else
-    waitkeydown(inf);
+
+    %waitkeydown(inf); % JG_MOD
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 end
+
+
+
+
 
 %% Fixation Cross
 % fixCross = struct(); 
@@ -210,10 +277,22 @@ endText = sprintf(['You have done the exercise. \n\n\n',...
 DrawFormattedText(window, endText, 'center', 'center', white);
 Screen('Flip', window);
 if scanner_mode == 1
-    waitkeydown(inf,[28,29,30,31]);
+    
+    %waitkeydown(inf,[28,29,30,31]); %JG_MOD
+
+    % JG_ADD - wait for cedrus button press
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 else
-    waitkeydown(inf);
+
+    %waitkeydown(inf); % JG_MOD
+    % JG_ADD - wait for cedrus button press 
+    ignoreme = CedrusResponseBox('FlushEvents', cedrus_handle);
+    evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
+
 end
+
 
 
 %endText = sprintf(['- Ende der Uebung -\n\n\n',...
