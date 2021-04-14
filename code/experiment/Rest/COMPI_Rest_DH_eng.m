@@ -13,11 +13,15 @@ end
 
 %% Intialize EEG triggers if necessary
 if scanner_mode == 3
-    ioObj = io64;
-    status = io64(ioObj);
-    address = hex2dec('378');
+    %ioObj = io64;
+    %status = io64(ioObj);
+    %address = hex2dec('378');
     IPI = 4;
-    io64(ioObj,address,6); wait(IPI); io64(ioObj,address,0); %output command
+    %io64(ioObj,address,6); wait(IPI); io64(ioObj,address,0); %output command
+
+    sp = BioSemiSerialPort(); % open serial port
+
+
 end
 
 
@@ -169,10 +173,12 @@ switch scanner_mode
         waitkeydown(inf);
         
         % TRIGGER start experiment
-        io64(ioObj,address,1);   %output command
+        %io64(ioObj,address,1);   %output command
+        sp.sendTrigger(1);
         wait(IPI);
-        io64(ioObj,address,0);
-        
+        %io64(ioObj,address,0);
+        sp.sendTrigger(0);
+
         rest_data.when_start = GetSecs;
         
        
@@ -205,9 +211,11 @@ for i = 1:5
         
          % EEG TRIGGER condition change
         if scanner_mode == 3
-            io64(ioObj,address,b);   %output command
-            wait(IPI);
-            io64(ioObj,address,0);
+            %io64(ioObj,address,b);   %output command
+            sp.sendTrigger(b);
+	    wait(IPI);
+            %io64(ioObj,address,0);
+	    sp.sendTrigger(0);
         end        
         
         % Save condition change time
@@ -251,7 +259,7 @@ end
 
 
 %% End screen 
-endText = 'Geschafft!';
+endText = 'Finished!' ; %'Geschafft!';
 DrawFormattedText(window, endText, 'center', 'center', white);
 Screen('Flip', window);
 
