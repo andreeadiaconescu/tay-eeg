@@ -70,7 +70,9 @@ switch OS
                 session.expPath = '/Users/drea/Documents/CAMH/TAY/EEG';
             otherwise
                 % JG_MOD
-                session.expPath = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
+                %session.expPath = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
+		session.expPath = 'C:\Users\eeg_lab\Desktop\KCNI_EEG_Lab\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG';
+
         end
         addpath('cogent2000v1.32\Toolbox');
     case 'lin'
