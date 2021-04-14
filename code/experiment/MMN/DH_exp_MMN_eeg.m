@@ -55,13 +55,12 @@ if scanner_mode == 3
     %     ioObj = io64;
     %     status = io64(ioObj);
     %     address = hex2dec('378');
-    %     IPI = 4;
+    IPI = 4;
     %     io64(ioObj,address,MMN.triggers.test);   %output command
     %     wait(IPI);
     %     io64(ioObj,address,0);
     sp = BioSemiSerialPort(); % open serial port
 %     sp.findSerialPortName % -> said port is COM4, so changed port name in BioSemiSerialPort.m
-    sp = BioSemiSerialPort(); % open serial port
     sp.testTriggers
 end
 
@@ -97,9 +96,12 @@ Screen('Flip', visuals.window);
 
 if scanner_mode == 3
     sp.sendTrigger(MMN.triggers.instructions);
-%     io64(ioObj,address,MMN.triggers.instructions);                               % tone actually starts 25ms later!!!
-%     wait(IPI);                                                                  % duration of the trigger
-%     io64(ioObj,address,0);
+    % io64(ioObj,address,MMN.triggers.instructions); 
+    % tone actually starts 25ms later!!!
+    wait(IPI); 
+    % duration of the trigger
+    % io64(ioObj,address,0);
+    sp.sendTrigger(0);
 end
 
 % wait for an experimenter button press
@@ -111,9 +113,10 @@ Screen('Flip', visuals.window);
 
 if scanner_mode == 3
     sp.sendTrigger(MMN.triggers.start);
-%     io64(ioObj,address,MMN.triggers.start);
-%     wait(IPI);
-%     io64(ioObj,address,0);
+    %     io64(ioObj,address,MMN.triggers.start);
+    wait(IPI);
+    %  io64(ioObj,address,0);
+    sp.sendTrigger(0);
 end
 
 % save start time of main loop
@@ -135,9 +138,10 @@ for trial = 1:length(MMN.stimuli.audSequence) - 1
     %send trigger
     if scanner_mode == 3
         sp.sendTrigger(MMN.triggers.tones(trial));
-%         io64(ioObj,address,MMN.triggers.tones(trial));
-%         wait(IPI);
-%         io64(ioObj,address, 0);
+        %  io64(ioObj,address,MMN.triggers.tones(trial));
+        wait(IPI);
+        %  io64(ioObj,address, 0);
+	sp.sendTrigger(0);
     end
     
     %Play tone & record time
@@ -160,9 +164,10 @@ for trial = 1:length(MMN.stimuli.audSequence) - 1
         
         if scanner_mode == 3
             sp.sendTrigger(MMN.triggers.visualRight);
-%             io64(ioObj,address,MMN.triggers.visualRight);                       % set the trigger
-%             wait(IPI);
-%             io64(ioObj,address, 0);
+            % io64(ioObj,address,MMN.triggers.visualRight);                       % set the trigger
+            wait(IPI);
+            % io64(ioObj,address, 0);
+	    sp.sendTrigger(0);
         end
         
     elseif MMN.stimuli.visSequence(trial) == 2                              % open on the left
@@ -173,9 +178,10 @@ for trial = 1:length(MMN.stimuli.audSequence) - 1
         
         if scanner_mode == 3
             sp.sendTrigger(MMN.triggers.visualLeft);
-%             io64(ioObj,address,MMN.triggers.visualLeft);                       % set the trigger
-%             wait(IPI);
-%             io64(ioObj,address, 0);
+            % io64(ioObj,address,MMN.triggers.visualLeft);                       % set the trigger
+            wait(IPI);
+            % io64(ioObj,address, 0);
+	    sp.sendTrigger(0);
         end
         
     elseif MMN.stimuli.visSequence(trial) == 0                              % don't open, dummy flip
@@ -185,9 +191,10 @@ for trial = 1:length(MMN.stimuli.audSequence) - 1
         
         if scanner_mode == 3
             sp.sendTrigger(MMN.triggers.visualDummy);
-%             io64(ioObj,address,MMN.triggers.visualDummy);                       % set the trigger
-%             wait(IPI);
-%             io64(ioObj,address, 0);
+            %  io64(ioObj,address,MMN.triggers.visualDummy);                       % set the trigger
+            wait(IPI);
+            %  io64(ioObj,address, 0);
+	    sp.sendTrigger(0);
         end
     end
     
