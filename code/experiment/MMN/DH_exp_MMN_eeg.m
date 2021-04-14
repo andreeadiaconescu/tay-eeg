@@ -55,13 +55,16 @@ if scanner_mode == 3
     %     ioObj = io64;
     %     status = io64(ioObj);
     %     address = hex2dec('378');
+    sp = BioSemiSerialPort(); % open serial port
     IPI = 4;
     %     io64(ioObj,address,MMN.triggers.test);   %output command
-    %     wait(IPI);
+    sp.sendTrigger(MMN.triggers.test);
+    wait(IPI);
     %     io64(ioObj,address,0);
-    sp = BioSemiSerialPort(); % open serial port
-%     sp.findSerialPortName % -> said port is COM4, so changed port name in BioSemiSerialPort.m
-    sp.testTriggers
+    sp.sendTrigger(0);
+    %     sp.findSerialPortName % -> said port is COM4, so changed port name in BioSemiSerialPort.m
+    %sp.testTriggers
+
 end
 
 [screen] = setupScreen;
@@ -112,8 +115,8 @@ Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.f
 Screen('Flip', visuals.window);
 
 if scanner_mode == 3
-    sp.sendTrigger(MMN.triggers.start);
     %     io64(ioObj,address,MMN.triggers.start);
+    sp.sendTrigger(MMN.triggers.start);
     wait(IPI);
     %  io64(ioObj,address,0);
     sp.sendTrigger(0);
