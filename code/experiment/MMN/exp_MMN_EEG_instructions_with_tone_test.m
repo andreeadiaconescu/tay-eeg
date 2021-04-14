@@ -33,19 +33,25 @@ KbName('UnifyKeyNames');
 session = setupSession(subject, hand, 'win', 'instructions', scanner_mode);
 MMN = createMMN(session,scanner_mode);
 
+% JG_ADD
+sp = BioSemiSerialPort(); % open serial port
+
+
 %Initialize triggers
 MMN.triggers.test = 99;
 MMN.triggers.start = 1;
 
 % Initialize parallel port
 if scanner_mode == 3
-    ioObj = io64;
-    status = io64(ioObj);
-    address = hex2dec('378');
+    %ioObj = io64;
+    %status = io64(ioObj);
+    %address = hex2dec('378');
     IPI = 4;
-    io64(ioObj,address,MMN.triggers.test);   %output command
+    %io64(ioObj,address,MMN.triggers.test);   %output command
+    sp.sendTrigger(MMN.triggers.test);
     wait(IPI);
-    io64(ioObj,address,0);
+    %io64(ioObj,address,0);
+    sp.sendTrigger(0);
 end
 
 %% ------------------------- initializing ----------------------------- %%
@@ -94,9 +100,13 @@ evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
 t = evt.rawtime; 
 
 if scanner_mode == 3
-    io64(ioObj,address,MMN.triggers.start);            
+
+    %io64(ioObj,address,MMN.triggers.start);   
+    sp.sendTrigger(MMN.triggers.start);
     wait(IPI);                                           
-    io64(ioObj,address,0);
+    %io64(ioObj,address,0);
+    sp.sendTrigger(0);
+
 end
 
 %[~, t] = waitserialbyte(MMN.scanner.boxport, inf, MMN.scanner.trigger);
