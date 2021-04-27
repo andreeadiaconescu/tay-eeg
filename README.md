@@ -50,7 +50,13 @@
 
 - Source of funding:       CAMH Discovery Fund
 
-Please clone this repo using the recursive options, since it contains the SPM version to be used in the analysis as a sub-module (type on Linux, Mac):
+Getting Started
+---------------
+1. Please clone this repo using the recursive options, since it contains the SPM version to be used in the analysis as a sub-module (type on Linux, Mac):
 ```
 git clone --recursive git@github.com:andreeadiaconescu/tay-eeg.git
+```
+2. Run the subject-specific preprocessing, sensor- and source-based analysis, and quality control by running the command:
+```
+main_tayeeg_mmn
 ```
