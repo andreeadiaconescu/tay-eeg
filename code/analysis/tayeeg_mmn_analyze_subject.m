@@ -70,7 +70,7 @@ if doRunTFSources
     tmpType = options.eeg.type;
     options.eeg.type = 'tfsource';
     fprintf('Extracting time-frequency based on source waveforms for %s', id);
-    tayeeg_tfsource(id, options, options.eeg.source.doVisualize); % tayeeg_source; %tayeeg_timeFrequency/dmpad_tf
+    tayeeg_tfsource(id, options);
     options.eeg.type = tmpType;
 end
 
