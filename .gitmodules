@@ -1,0 +1,3 @@
+[submodule "code/analysis/spm"]
+	path = code/analysis/spm
+	url = https://github.com/spm/spm12.git
