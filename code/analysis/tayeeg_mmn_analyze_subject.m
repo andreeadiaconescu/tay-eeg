@@ -1,89 +1,84 @@
-function compi_mmn_analyze_subject( id, options )
-%MNKET_ANALYZE_SUBJECT Performs all analysis steps for one subject of the MNKET study (up until
+function tayeeg_mmn_analyze_subject( id, options )
+%TAYEEG_ANALYZE_SUBJECT Performs all analysis steps for one subject of the MNKET study (up until
 %first level modelbased statistics)
 %   IN:     id  - subject identifier string, e.g. '0001'
 %   OUT:    --
 
 if nargin < 2
-    options = compi_ioio_options;
+    options = tayeeg_analysis_options;
 end
 
-fprintf('\n\n --------- Working on: %s ---------\n\n', id);
+fprintf('\n===\n\t The following pipeline Steps per subject were selected. Please double-check:\n\n');
+disp(options.eeg.pipe.executeStepsPerSubject);
+fprintf('\n\n===\n\n');
+pause(2);
 
+doPreprocessing         = ismember('correct_eyeblinks', options.eeg.pipe.executeStepsPerSubject);
+doModelling             = ismember('create_behav_regressors', options.eeg.pipe.executeStepsPerSubject);  
+doRunStatsSensor        = ismember('run_stats_sensor', options.eeg.pipe.executeStepsPerSubject);
+doErpAnalysis           = ismember('run_erp_analysis', options.eeg.pipe.executeStepsPerSubject);
+doRunSources            = ismember('extract_sources', options.eeg.pipe.executeStepsPerSubject);
+doRunStatsSource        = ismember('run_stats_source', options.eeg.pipe.executeStepsPerSubject);
+doComputeBetaWave       = ismember('compute_beta_wave', options.eeg.pipe.executeStepsPerSubject);
+doRunTFSources          = ismember('extract_tf', options.eeg.pipe.executeStepsPerSubject);
+doRunStatsTFSource      = ismember('run_stats_tfsource', options.eeg.pipe.executeStepsPerSubject);
 
-%% Strategy 1: Reject eyeblinks
-options.eeg.preproc.eyeblinktreatment = 'reject';
-fprintf('\n\n --- Subject analysis using: %s method ---\n\n', upper(options.eeg.preproc.eyeblinktreatment));
-% Pre-processing
-compi_mmn_preprocessing_reject_eyeblinks(id, options);
+% Preparation and Pre-processing
+if doPreprocessing
+    tayeeg_mmn_preprocessing_reject_eyeblinks(id, options);
+end
 
-% ERP analysis (up until conversion): roving definition
-options.eeg.conversion.mode = 'diffWaves';
-options.eeg.erp.type = 'roving';
-dprst_erp(id, options);
-dprst_conversion(id, options);
+% Applies Bayesian Learning Model to Input and Creates regressors from behavioral model
+if doModelling
+    tayeeg_mmn_model(id, options)
+end
 
-% ERP analysis (up until conversion): phases_roving definition
-options.eeg.conversion.mode = 'ERPs';
-options.eeg.erp.type = 'phases_roving';
-dprst_erp(id, options);
-dprst_conversion(id, options);
+% Image conversion and GLM in sensor space
+if doRunStatsSensor
+    fprintf('Running GLM for %s (Sensor space)', id);
+    tayeeg_1stlevel_stats(id, options,'sensor');
+end
 
-% ERP analysis (up until conversion): phases_oddball definition
-options.eeg.conversion.mode = 'ERPs';
-options.eeg.erp.type = 'phases_oddball';
-dprst_erp(id, options);
-dprst_conversion(id, options);
+% ERP analysis
+if doErpAnalysis
+    tayeeg_erp(id, options)
+end
 
-% modelbased analysis (up until 1st level)
-options.eeg.conversion.mode = 'modelbased';
-dprst_conversion(id, options);
-options.eeg.stats.mode = 'modelbased';
-options.eeg.stats.design = 'epsilon';
+% Compute Beta Waveform
+if doComputeBetaWave
+    fprintf('Running Beta Wave computation for %s', id);
+    tayeeg_contrast(id, options);
+end
 
-options.eeg.stats.priors = 'omega35';
-dprst_1stlevel(id, options);
-options.eeg.stats.priors = 'peIncrease';
-dprst_1stlevel(id, options);
-options.eeg.stats.priors = 'volTrace';
-dprst_1stlevel(id, options);
+% Extract sources based on fMRI priors
+if doRunSources
+    tmpType = options.eeg.type;
+    options.eeg.type = 'source';
+    fprintf('Extracting source waveforms for %s', id);
+    tayeeg_source(id, options, options.eeg.source.doVisualize); % tayeeg_source; %tayeeg_timeFrequency/dmpad_tf
+    options.eeg.type = tmpType;
+end
 
-%% Strategy 2: Correct eyeblinks
-options.eeg.preproc.eyeblinktreatment = 'ssp';
-fprintf('\n\n --- Subject analysis using: %s method ---\n\n', upper(options.eeg.preproc.eyeblinktreatment));
-% Pre-processing
-dprst_preprocessing_ssp(id, options);
+% Image conversion and GLM in source space
+if doRunStatsSource
+    fprintf('Running GLM for %s (Source space)', id);
+    tayeeg_1stlevel_stats(id, options,'source');
+end
 
-% ERP analysis (up until conversion): roving definition
-options.eeg.erp.type = 'roving';
-options.eeg.conversion.mode = 'diffWaves';
-dprst_erp(id, options);
-dprst_conversion(id, options);
+% Extract sources based on fMRI priors
+if doRunTFSources
+    tmpType = options.eeg.type;
+    options.eeg.type = 'tfsource';
+    fprintf('Extracting time-frequency based on source waveforms for %s', id);
+    tayeeg_tfsource(id, options, options.eeg.source.doVisualize); % tayeeg_source; %tayeeg_timeFrequency/dmpad_tf
+    options.eeg.type = tmpType;
+end
 
-% ERP analysis (up until conversion): phases_roving definition
-options.eeg.conversion.mode = 'ERPs';
-options.eeg.erp.type = 'phases_roving';
-dprst_erp(id, options);
-dprst_conversion(id, options);
-
-% ERP analysis (up until conversion): phases_oddball definition
-options.eeg.conversion.mode = 'ERPs';
-options.eeg.erp.type = 'phases_oddball';
-dprst_erp(id, options);
-dprst_conversion(id, options);
-
-% modelbased analysis (up until 1st level)
-options.eeg.conversion.mode = 'modelbased';
-dprst_conversion(id, options);
-options.eeg.stats.mode = 'modelbased';
-options.eeg.stats.design = 'epsilon';
-
-options.eeg.stats.priors = 'omega35';
-dprst_1stlevel(id, options);
-options.eeg.stats.priors = 'peIncrease';
-dprst_1stlevel(id, options);
-options.eeg.stats.priors = 'volTrace';
-dprst_1stlevel(id, options);
+% Image conversion and GLM in source space
+if doRunStatsTFSource
+    fprintf('Running GLM for %s (TF in Source space)', id);
+    tayeeg_1stlevel_stats(id, options,'tfsource');
+end
 
 end
 
