@@ -200,13 +200,4 @@ details.eeg.log.batches.root = fullfile(details.eeg.subjectroot.results, 'batche
 details.eeg.log.sfxTimeStamp = sprintf('_%s', datestr(now, 'yymmdd_HHMMSS'));
 details.eeg.log.batches.statsfile = fullfile(details.eeg.log.batches.root, ...
     sprintf('%s%s.m', 'batch_TAY_stats', details.eeg.log.sfxTimeStamp));
-
-%% subject-specific options
-% EB detection threshold
-switch id
-    case {'0003', '0006'}
-        details.eeg.eyeblinkthreshold = 2;
-        options.eeg.preproc.eyeblinkthreshold = details.eeg.eyeblinkthreshold;
-    otherwise
-        details.eeg.eyeblinkthreshold = options.eeg.preproc.eyeblinkthreshold;
 end
