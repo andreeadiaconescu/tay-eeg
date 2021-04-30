@@ -8,7 +8,7 @@ switch options.eeg.erp.type
     case 'epsilon'
         erp_select.conditions = {'lowPE','highPE'};
 end
-erp_select.electrode   = 'Fz';
+erp_select.electrode   = 'Cz';
 erp_select.averaging   = 'robust'; % s (standard), r (robust)
 switch erp_select.averaging
     case 'robust'
@@ -19,6 +19,6 @@ end
 erp_select.contrastWeighting   = 1;
 erp_select.contrastPrefix      = 'diff_';
 erp_select.contrastName        = 'mmn';
-erp_select.percentPe           = 15;
+erp_select.percentPe           = 20;
 erp_select.type                = options.eeg.erp.type;
 end

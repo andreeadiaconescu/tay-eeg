@@ -165,10 +165,10 @@ details.eeg.erp.sourcefile          = fullfile(details.eeg.erp.root, ['B' detail
 details.eeg.erp.erpfig              = fullfile(details.eeg.erp.root, ...
                             [details.eeg.subproname '_ERP_']);
                         
-details.eeg.erp.redeffile   = fullfile(details.eeg.erp.root, ['redef_' details.eeg.subproname '.mat']);
-details.eeg.erp.avgfile     = fullfile(details.eeg.erp.root, ['avg_' details.eeg.subproname '.mat']);
-details.eeg.erp.erpfile     = fullfile(details.eeg.erp.root, [details.eeg.erp.erpfilename '.mat']);
-details.eeg.erp.difffile    = fullfile(details.eeg.erp.root, ['diff_' details.eeg.erp.erpfilename '.mat']);
+details.eeg.erp.redeffile   = fullfile(details.eeg.erp.root, ['redef_' details.eeg.subproname]);
+details.eeg.erp.avgfile     = fullfile(details.eeg.erp.root, ['avg_' details.eeg.subproname]);
+details.eeg.erp.erpfile     = fullfile(details.eeg.erp.root, details.eeg.erp.erpfilename);
+details.eeg.erp.difffile    = fullfile(details.eeg.erp.root, ['diff_' details.eeg.erp.erpfilename]);
 %% EEG Quality Control
 details.eeg.quality.root = fullfile(details.eeg.subjectroot.results, 'quality');
 details.eeg.quality.initialtrials = fullfile(details.eeg.quality.root, [details.eeg.subproname '_numTrialsInitial.mat']);
@@ -187,7 +187,6 @@ details.eeg.quality.averageeyeblinkcorrectionfigure2 = fullfile(details.eeg.qual
 details.eeg.quality.badtrialfigures = fullfile(details.eeg.quality.root, [details.eeg.subproname '_badtrials']);
 details.eeg.quality.coregmeshfigure = fullfile(details.eeg.quality.root, [details.eeg.subproname '_coregistration_mesh.fig']);
 details.eeg.quality.coregdatafigure = fullfile(details.eeg.quality.root, [details.eeg.subproname '_coregistration_data.fig']);
-
 details.eeg.quality.firstlevelmask = fullfile(details.eeg.quality.root, [details.eeg.subproname '_firstlevel_mask']);
 
 %% logging, e.g. single subject batches
@@ -202,3 +201,12 @@ details.eeg.log.sfxTimeStamp = sprintf('_%s', datestr(now, 'yymmdd_HHMMSS'));
 details.eeg.log.batches.statsfile = fullfile(details.eeg.log.batches.root, ...
     sprintf('%s%s.m', 'batch_TAY_stats', details.eeg.log.sfxTimeStamp));
 
+%% subject-specific options
+% EB detection threshold
+switch id
+    case {'0003', '0006'}
+        details.eeg.eyeblinkthreshold = 2;
+        options.eeg.preproc.eyeblinkthreshold = details.eeg.eyeblinkthreshold;
+    otherwise
+        details.eeg.eyeblinkthreshold = options.eeg.preproc.eyeblinkthreshold;
+end

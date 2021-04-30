@@ -22,7 +22,7 @@ fix_proproc.windowForEyeblinkdetection = 3; % first event of interest (and optio
 fix_proproc.eyeblinkthreshold   = 3; % for SD thresholding: in standard deviations, for amp in uV
 % NOTE: This sets the default threshold for detecting eye blink events in the EOG, however, this 
 % will be adjusted individually for subjects if their EOG requires a different threshold. For all
-% adjustments, see mnket_subjects.
+% adjustments, see tayeeg_subjects.
 fix_proproc.eyeDetectionThresholdDefault = 3; % number of SDs needed to automatically detect an eyeblink
 fix_proproc.epochwin                = [-100 450]; % choose the range in which artefacts would be an issue for the statistics
 fix_proproc.eyeblinkwin             = [-500 500];
