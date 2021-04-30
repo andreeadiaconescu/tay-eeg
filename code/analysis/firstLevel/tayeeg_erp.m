@@ -56,56 +56,74 @@ catch
     % get new condition names
     switch options.eeg.erp.type
         case 'epsilon'
+            categoryNames = {'\epsilon_2','\epsilon_3'};
+            categoryLabels={'epsi2','epsi3'};
             design      = getfield(load(details.model.design), 'design');
-            condlist    = mmn_lowhighPE_conditions(design.epsilon2, ...
-                '\epsilon_2', options);
-            savefig([details.eeg.erp.erpfig '_epsi2.fig']);
-        case 'lowhighEpsi3'
-            load(details.design);
-            design      = getfield(load(details.model.design), 'design');
-            condlist    = mmn_lowhighPE_conditions(design.epsilon3, ...
-                '\epsilon_3', options);
-            savefig([details.eeg.erp.erpfig '_epsi3.fig']);
-    end
-    
-    % redefine trials for averaging
-    D = tnueeg_redefine_conditions(D, condlist);
-    D = copy(D, details.eeg.erp.redeffile);
-    disp(['Redefined conditions for subject ' id]);
-    
-    %-- averaging ---------------------------------------------------------------------------------%
-    D = tnueeg_average(D, options);
-    D = copy(D, details.eeg.erp.avgfile);
-    disp(['Averaged over trials for subject ' id]);
-    
-    % in case of robust filtering: re-apply the low-pass filter
-    switch options.eeg.erp.averaging
-        case 'robust'
-            % make sure we don't delete ERP files during filtering
-            options.eeg.preproc.keep = 1;
-            D = tnueeg_filter(D, 'low', options);
-            disp(['Re-applied the low-pass filter for subject ' id]);
-        case 'simple'
-            % do nothing
-    end
-    D = copy(D, details.eeg.erp.erpfile);
-    
-    %-- ERP plot ----------------------------------------------------------------------------------%
-    chanlabel = options.eeg.erp.electrode;
-    switch options.eeg.erp.type
-        case {'epsilon'}
-            triallist = {'low', 'Lowest 15 %', [0 0 1]; ...
-                'high', 'Highest 15 %', [1 0 0]};
-    end
-    if doPlot
-        h = tnueeg_plot_subject_ERPs(D, chanlabel, triallist);
-        h.Children(2).Title.String = ['Subject ' id ': ' options.eeg.erp.type ' ERPs'];
-        savefig(h, details.eeg.erp.erpfig);
-        fprintf('\nSaved an ERP plot for subject %s\n\n', id);
-    end
-    
-    %-- difference waves --------------------------------------------------------------------------%
-    switch options.eeg.erp.type
+            factors = fieldnames(design);
+            for i = 1:numel(factors)
+                condlist    = mmn_lowhighPE_conditions(design.(factors{i}), ...
+                    categoryNames{i}, options);
+                savefig([details.eeg.erp.erpfig categoryLabels{i} '.fig']);
+                D = spm_eeg_load(details.eeg.prepfile);
+                % redefine trials for averaging
+                Drefined = tnueeg_redefine_conditions(D, condlist);
+                Dsaved = copy(Drefined, fullfile(details.eeg.erp.redeffile, [categoryLabels{i} '.mat']));
+                disp(['Redefined conditions for subject ' id]);
+                
+                %-- averaging ---------------------------------------------------------------------------------%
+                Daveraged = tnueeg_average(Dsaved, options);
+                Daveraged = copy(Daveraged, fullfile(details.eeg.erp.avgfile, [categoryLabels{i} '.mat']));
+                disp(['Averaged over trials for subject ' id]);
+                
+                % in case of robust filtering: re-apply the low-pass filter
+                switch options.eeg.erp.averaging
+                    case 'robust'
+                        % make sure we don't delete ERP files during filtering
+                        options.eeg.preproc.keep = 1;
+                        Dfiltered = tnueeg_filter(Daveraged, 'low', options);
+                        disp(['Re-applied the low-pass filter for subject ' id]);
+                    case 'simple'
+                        % do nothing
+                end
+                Dfinal = copy(Dfiltered, fullfile(details.eeg.erp.erpfile, [categoryLabels{i} '.mat']));
+                %-- ERP plot ----------------------------------------------------------------------------------%
+                chanlabel = options.eeg.erp.electrode;
+                switch options.eeg.erp.type
+                    case {'epsilon'}
+                        triallist = {'low', ['Lowest ' options.eeg.erp.percentPe ' %'], [0 0 1]; ...
+                            'high', ['Highest ' options.eeg.erp.percentPe ' %'], [1 0 0];...
+                            'other', 'Middle', [0 1 0]};
+                end
+                if doPlot
+                    h = tnueeg_plot_subject_ERPs(Dfinal, chanlabel, triallist);
+                    h.Children(2).Title.String = ['Subject ' id ': ' options.eeg.erp.type ' of ' categoryLabels{i} ' ERPs'];
+                    savefig(h, fullfile(details.eeg.erp.root, [details.eeg.subproname categoryLabels{i} '.fig']));
+                    fprintf('\nSaved an ERP plot for subject %s\n\n', id);
+                end
+                % preparation for computing the difference wave
+                %-- difference waves --------------------------------------------------------------------------%
+                % determine condition order within the D object
+                idxLow = indtrial(Drefined, 'low');
+                idxHigh = indtrial(Drefined, 'high');
+                
+                % set weights such that we substract standard trials from deviant
+                % trials, give the new condition a name
+                weights = zeros(1, ntrials(Drefined));
+                weights(idxHigh) = 1;
+                weights(idxLow) = -1;
+                condlabel = {'mmn'};
+                
+                % sanity check for logfile
+                disp('Difference wave will be computed using:');
+                disp(weights);
+                disp('as weights on these conditions:');
+                disp(conditions(Drefined));
+                
+                % compute the actual contrast
+                Ddiff = tnueeg_contrast_over_epochs(Drefined, weights, condlabel, options);
+                copy(Ddiff, fullfile(details.eeg.erp.difffile,[categoryLabels{i} '.mat']));
+                disp(['Computed the difference wave for subject ' id]);
+            end
         case {'standard'}
             % preparation for computing the difference wave
             % determine condition order within the D object
@@ -127,30 +145,7 @@ catch
             
             % compute the actual contrast
             D = tnueeg_contrast_over_epochs(D, weights, condlabel, options);
-            copy(D, details.difffile);
-            disp(['Computed the difference wave for subject ' id]);
-        case {'epsilon'}
-            % preparation for computing the difference wave
-            % determine condition order within the D object
-            idxLow = indtrial(D, 'low');
-            idxHigh = indtrial(D, 'high');
-            
-            % set weights such that we substract standard trials from deviant
-            % trials, give the new condition a name
-            weights = zeros(1, ntrials(D));
-            weights(idxHigh) = 1;
-            weights(idxLow) = -1;
-            condlabel = {'mmn'};
-            
-            % sanity check for logfile
-            disp('Difference wave will be computed using:');
-            disp(weights);
-            disp('as weights on these conditions:');
-            disp(conditions(D));
-            
-            % compute the actual contrast
-            D = tnueeg_contrast_over_epochs(D, weights, condlabel, options);
-            copy(D, details.eeg.erp.difffile);
+            copy(D, fullfile(details.eeg.erp.difffile, 'standard_mmn.mat'));
             disp(['Computed the difference wave for subject ' id]);
     end
 end

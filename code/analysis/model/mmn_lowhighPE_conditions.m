@@ -23,8 +23,8 @@ nHigh   = nLow -1;
 lowIdcs     = sortIdx(1: nLow);
 highIdcs    = sortIdx(end-nHigh: end);
 
-conditions(lowIdcs+1)    = {'low'};
-conditions(highIdcs+1)   = {'high'};
+conditions(lowIdcs)    = {'low'};
+conditions(highIdcs)   = {'high'};
 
 
 

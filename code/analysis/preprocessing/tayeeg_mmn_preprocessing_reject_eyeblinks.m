@@ -111,17 +111,6 @@ catch
     D = events(D, 1:numel(toneevents), toneevents);
     save(D);
     
-    %--remove events that occurred before the start of the tone sequence
-    D = spm_eeg_load(details.eeg.prepfile);
-    nInitial = length(D.events);
-    nEyeblinktrials = numel(trialStats.idxEyeartefacts.tone);
-    
-    if nInitial+nEyeblinktrials ~= 1800
-        warning('Design does not hold 1800 trials - check first trials');
-        warning('Marking the first triggered events before the start of the task as bad');
-        badInitiTrialIndex = [1:(nInitial+nEyeblinktrials-1800)];
-        D = badtrials(D, badInitiTrialIndex, 1);
-    end
     
     %-- headmodel ---------------------------------------------------------------------------------%
     fid     = details.eeg.fid;
@@ -139,6 +128,19 @@ catch
     D = move(D, details.eeg.prepfilename);
     trialStats.nTrialsFinal = tnueeg_count_good_trials(D);
     save(details.eeg.goodtrials, 'trialStats');
+    
+     %--remove events that occurred before the start of the tone sequence,
+     % if those are present
+    D = spm_eeg_load(details.eeg.prepfile);
+    nInitial = length(D.events);
+    nEyeblinktrials = numel(trialStats.idxEyeartefacts.tone);
+    
+    if nInitial+nEyeblinktrials ~= 1800
+        warning('Design does not hold 1800 trials - check first trials');
+        warning('Marking the first triggered events before the start of the task as bad');
+        badInitiTrialIndex = [1:(nInitial+nEyeblinktrials-1800)];
+        D = badtrials(D, badInitiTrialIndex, 1);
+    end
     
     disp('   ');
     disp(['Detected ' num2str(trialStats.numEyeblinks) ' eye blinks for subject ' id]);
