@@ -1,5 +1,6 @@
 function COMPI_Rest_DH_eng(subject,scanner_mode)
 
+
 %% Defaults
 if nargin < 1
     scanner_mode =  0;
@@ -123,7 +124,7 @@ HideCursor(screenNumber);
 
 
 %% Configure key board
-config_keyboard (5,1,'nonexclusive'); % Set up key board
+config_keyboard(5,1,'nonexclusive'); % Set up key board
 start_cogent;
 
 

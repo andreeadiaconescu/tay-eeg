@@ -26,11 +26,25 @@ end
 
 
 %% ---------------------- setting up session -------------------------- %%
-addpath('stimuli', 'design', 'lib');
+
+%addpath('stimuli', 'design', 'lib');
+%addpath(fullfile(session.expPath, 'stimuli'));
+%addpath(fullfile(session.expPath, 'design'));
+%addpath(fullfile(session.expPath, 'lib'));
+
+%addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\MMN\stimuli');
+%addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\MMN\design');
+%addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\MMN\lib');
+
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\stimuli');
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\design');
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\lib');
+
 KbName('UnifyKeyNames');
 
 session = setupSession(subject, hand, 'win', 'full', scanner_mode);
 MMN = createMMN(session,scanner_mode);
+
 
 
 
@@ -70,7 +84,7 @@ end
 [screen] = setupScreen;
 visuals = createVisualStimuli(screen);
 
-config_keyboard (5,1,'nonexclusive'); % Set up key board
+config_keyboard(5,1,'nonexclusive'); % Set up key board
 initializeCogent(MMN);
 
 audios = createAuditoryStimuli(session);
@@ -78,7 +92,8 @@ audios = initializeSounds(audios, MMN);
 
 
 % JG_ADD
-cedrus_handle = CedrusResponseBox('Open', 'COM6');
+%cedrus_handle = CedrusResponseBox('Open', 'COM6');
+cedrus_handle = CedrusResponseBox('Open', 'COM3');
 
 % JG_ADD
 MMN.responses.cedrus = {}; % collecting all cedrus response box data, in 
@@ -148,9 +163,13 @@ for trial = 1:length(MMN.stimuli.audSequence) - 1
     end
     
     %Play tone & record time
+    
+    % IS THIS WHERE THE ERROR COMES IN?
+    
     MMN.stimuli.startTimes(trial) = PsychPortAudio('Start', audios.pahandle, 1, 0, 1); % tone of 1st trial is already in the buffer
     MMN.stimuli.audTimes(trial) = GetSecs - MMN.startLoop.GetSecs;           % START sec of tone presentation
     
+    %blah
     
     %Update buffer
     PsychPortAudio('FillBuffer', audios.pahandle, audios.buffer(nexttone));

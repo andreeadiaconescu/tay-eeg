@@ -2,6 +2,8 @@
 % by Gabor Stefanics
 function COMPI_Rest_practice_DH_eng(scanner_mode)
 
+cd('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\Rest')
+
 %% Configurations
 % Load auditory Stimuli
 [y1, freq] = audioread('800Hz250ms.wav');
@@ -41,7 +43,8 @@ PsychPortAudio('FillBuffer', pahandle, buffer(2));
 
 
 % JG_ADD
-cedrus_handle = CedrusResponseBox('Open', 'COM6');
+%cedrus_handle = CedrusResponseBox('Open', 'COM6');
+cedrus_handle = CedrusResponseBox('Open', 'COM3');
 
 
 
