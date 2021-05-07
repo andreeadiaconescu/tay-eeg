@@ -13,7 +13,8 @@ end
 
 
 % JG_ADD
-cedrus_handle = CedrusResponseBox('Open', 'COM6');
+%cedrus_handle = CedrusResponseBox('Open', 'COM6');
+cedrus_handle = CedrusResponseBox('Open', 'COM3');
 
 
 

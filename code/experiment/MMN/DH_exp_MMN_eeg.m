@@ -1,6 +1,7 @@
 function DH_exp_MMN_eeg(subject, hand, scanner_mode)
 %%EXP_MMN_SCANNER Program for MMN in fMRI with opening central square
-%
+%cd ..
+
 % This program can be run from the command line, specifying:
 % - the subject's name (string)
 % - the handedness of the subject ('r' = right, 'l' = left)

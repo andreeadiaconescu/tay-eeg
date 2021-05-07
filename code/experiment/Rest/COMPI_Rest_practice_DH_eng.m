@@ -3,6 +3,7 @@
 function COMPI_Rest_practice_DH_eng(scanner_mode)
 
 cd('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\Rest')
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\lib');
 
 %% Configurations
 % Load auditory Stimuli
