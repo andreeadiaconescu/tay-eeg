@@ -39,7 +39,7 @@ expt_folder = pwd;
 eeg_folder = fullfile(expt_folder, 'EEG');
 mmn_folder = fullfile(expt_folder, 'MMN');
 rest_folder = fullfile(expt_folder, 'Rest');
-toolboxes_folder = fullfile(expt_folder, 'toolboxes');
+toolboxes_folder = fullfile(expt_folder, 'Toolboxes');
 
 addpath(genpath(mmn_folder))
 
