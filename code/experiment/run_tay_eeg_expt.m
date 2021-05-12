@@ -34,11 +34,11 @@ clear all
 %        root = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
 %end
 
+%% Setup paths for data toolbox and scripts
 expt_folder = pwd;
-
 eeg_folder = fullfile(expt_folder, 'EEG');
-mmn_folder = fullfile(expt_folder, 'MMN');
-rest_folder = fullfile(expt_folder, 'Rest');
+mmn_folder = fullfile(eeg_folder, 'MMN');
+rest_folder = fullfile(eeg_folder, 'Rest');
 toolboxes_folder = fullfile(expt_folder, 'Toolboxes');
 
 addpath(genpath(mmn_folder))
@@ -64,7 +64,7 @@ if resetup_psychtoolbox == 1
 end
 
 
-%cd(root);
+%% cd EEG folder
 cd(eeg_folder);
 
 %% Get User data
@@ -113,9 +113,9 @@ switch ui.task
         
         % ------------------------- MMN -------------------------
     case 'MMN'
-        addpath(genpath('WM'));
+        addpath(genpath('MMN'));
         try
-            cd 'MMN'
+            cd(mmn_folder);
         end
         
         switch scanner_mode
@@ -138,29 +138,29 @@ switch ui.task
             case 3 %EEG
                 switch ui.session
                     case 'practice'
-                        exp_MMN_EEG_instructions_with_tone_test(ui.subject_ID, ui.handedness, 0);
+                        exp_MMN_EEG_instructions_with_tone_test(ui.subject_ID, ui.handedness, 0, expt_folder);
                     case 'task'
-                        DH_exp_MMN_eeg(ui.subject_ID, ui.handedness,scanner_mode);
+                        DH_exp_MMN_eeg(ui.subject_ID, ui.handedness,scanner_mode, expt_folder);
                 end
         end
         
         % ------------------------- Resting -------------------------
     case 'Rest'
         addpath(genpath('Rest'));
-        addpath(genpath('MMN/cogent2000v1.32'));
+        %addpath(genpath('MMN/cogent2000v1.32'));
         try
-            cd 'Rest'
+            cd(rest_folder)
         end
         
         switch ui.session
             case 'practice'
                 %COMPI_Rest_practice_DH(scanner_mode);     % JG_MOD
-                COMPI_Rest_practice_DH_eng_2(scanner_mode);
+                COMPI_Rest_practice_DH_eng_2(scanner_mode, expt_folder);
 
             case 'task'
                 %COMPI_Rest_DH(ui.subject_ID,scanner_mode);  % JG_MOD
-                COMPI_Rest_DH_eng_2(ui.subject_ID,scanner_mode);
-    end
+                COMPI_Rest_DH_eng_2(ui.subject_ID,scanner_mode, expt_folder);
+        end
  
 end
 
