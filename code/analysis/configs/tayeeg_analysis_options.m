@@ -1,7 +1,7 @@
 function options = tayeeg_analysis_options(preprocStrategyValueArray)
 
 if nargin < 1
-    preprocStrategyValueArray = [1 3 2 2 1 2];
+    preprocStrategyValueArray = [1 1 2 2 1 2];
 end
 
 %% Load Paths-----------------------------------------------------------%

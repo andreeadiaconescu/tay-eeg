@@ -2,7 +2,7 @@ function preprocessing = mmn_set_preprocessing_strategy(resultroot, ...
     preprocStrategyValueArray)
 
 if nargin < 2 || isempty(preprocStrategyValueArray)
-    preprocStrategyValueArray = [1 3 2 2 1 2];
+    preprocStrategyValueArray = [1 1 2 2 1 2];
 end
 
 preprocessing             = [];
