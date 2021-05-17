@@ -27,7 +27,12 @@ end
  
 %% ---------------------- setting up session -------------------------- %%
 
-addpath('stimuli', 'design', 'lib');
+%addpath('stimuli', 'design', 'lib');
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\stimuli');
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\design');
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\lib');
+
+
 KbName('UnifyKeyNames');
 
 session = setupSession(subject, hand, 'win', 'instructions', scanner_mode);
@@ -73,7 +78,8 @@ audios = initializeSounds(audios, MMN);
 
 
 % JG_ADD
-cedrus_handle = CedrusResponseBox('Open', 'COM6');
+%cedrus_handle = CedrusResponseBox('Open', 'COM6');
+cedrus_handle = CedrusResponseBox('Open', 'COM3');
 
 % JG_ADD
 MMN.responses.cedrus = {}; % collecting all cedrus response box data, in 
@@ -197,7 +203,7 @@ evt = CedrusResponseBox('WaitButtonPress', cedrus_handle);
 % present some openings
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
 Screen('Flip', visuals.window);
-wait2(2000)
+wait2(2000);
 
 % left
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
@@ -207,7 +213,7 @@ wait2(MMN.times.visDuration);
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
 Screen('Flip', visuals.window);
 
-wait2(1000)
+wait2(1000);
 
 % right
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
@@ -227,7 +233,7 @@ wait2(MMN.times.visDuration);
 Screen('FrameRect', visuals.window, visuals.fixCol, visuals.fixCoords, visuals.fixWidth);
 Screen('Flip', visuals.window);
 
-wait2(2000)
+wait2(2000);
 
 % explain
 DrawFormattedText(visuals.window, visuals.training05, 'center', 100, screen.black);
@@ -368,7 +374,7 @@ nexttone = MMN.stimuli.audSequence(1);
 PsychPortAudio('FillBuffer', audios.pahandle, audios.buffer(nexttone));
 
 % play 10 tones of the training sequence
-for trial = 1: 10
+for trial = 1:10
         
     nexttone = MMN.stimuli.audSequence(trial + 1);
     
@@ -434,7 +440,7 @@ MMN.responses.dummy = MMN.responses.dummy + (MMN.responses.keys == MMN.keys.left
 % JG_ADD - HACKY!
 outdir = fullfile(pwd,fileparts(session.baseName));
 if exist(outdir) ~=7
-    mkdir(outdir)
+    mkdir(outdir);
 end
 
 % security save at this point

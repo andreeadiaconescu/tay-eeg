@@ -1,4 +1,14 @@
-function COMPI_Rest_DH_eng(subject,scanner_mode)
+function COMPI_Rest_DH_eng_2(subject,scanner_mode)
+% COMPI_Rest_DH_eng_2 - with modififations to make 
+% psychport audio calls similar to MMN code, because that one 
+% was working and this one was giving errors. :S 
+% JG
+
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG\lib');
+cd('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG');
+
+addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\Rest');
+%cd('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\Rest')
 
 
 %% Defaults
@@ -64,39 +74,39 @@ rest_data.data_desc = {'startTime','audTime',...
 
 
 %% Load auditory stimuli
-[y1, freq] = audioread('800Hz250ms.wav');
-[y2, freq] = audioread('800Hz250ms.wav');
 
-wavedata1 = y1';
-nrchannels = size(wavedata1,1); % Number of rows == number of channels.
+initializeCogent('');
+sess.tone1 = '800Hz250ms.wav';
+sess.tone2 = '800Hz250ms.wav';
+m.stimuli.audSequence = [1,2];
+audios = createAuditoryStimuli(sess)%;ion);
+audios = initializeSounds(audios, m);%MMN);
 
-if nrchannels < 2
-    wavedata1 = [wavedata1 ; wavedata1];
-    nrchannels = 2;
-end
-
-wavedata2 = y2';
-nrchannels = size(wavedata2,1); % Number of rows == number of channels.
-
-if nrchannels < 2
-    wavedata2 = [wavedata2 ; wavedata2];
-    nrchannels = 2;
-end
-
+%[y1, freq] = audioread('800Hz250ms.wav');
+%[y2, freq] = audioread('800Hz250ms.wav');
+%wavedata1 = y1';
+%nrchannels = size(wavedata1,1); % Number of rows == number of channels.
+%if nrchannels < 2
+%    wavedata1 = [wavedata1 ; wavedata1];
+%    nrchannels = 2;
+%end
+%wavedata2 = y2';
+%nrchannels = size(wavedata2,1); % Number of rows == number of channels.
+%if nrchannels < 2
+%    wavedata2 = [wavedata2 ; wavedata2];
+%   nrchannels = 2;
+%end
 
 %% Initialize sound buffer
-InitializePsychSound('reallyneedlowlatency=1')
-devices = PsychPortAudio('GetDevices', [], []);
-
-buffer = [];
-buffer(end+1) = PsychPortAudio('CreateBuffer', [], wavedata1);
-buffer(end+1) = PsychPortAudio('CreateBuffer', [], wavedata2);
-
-pahandle = PsychPortAudio('Open', [], [], 1, freq, nrchannels);
-PsychPortAudio('RunMode', pahandle, 1);
-
+%InitializePsychSound('reallyneedlowlatency=1')
+%devices = PsychPortAudio('GetDevices', [], []);
+%buffer = [];
+%buffer(end+1) = PsychPortAudio('CreateBuffer', [], wavedata1);
+%buffer(end+1) = PsychPortAudio('CreateBuffer', [], wavedata2);
+%pahandle = PsychPortAudio('Open', [], [], 1, freq, nrchannels);
+%PsychPortAudio('RunMode', pahandle, 1);
 % Fill playbuffer with content of buffer(1):
-PsychPortAudio('FillBuffer', pahandle, buffer(2));
+%PsychPortAudio('FillBuffer', pahandle, buffer(2));
 
 
 %% Set up screen
@@ -247,11 +257,17 @@ for i = 1:5
         end        
         
         % Save condition change time
-        rest_data.data(change_idx,1) = PsychPortAudio('Start', pahandle, 1, 0, 1); % start time
+        %rest_data.data(change_idx,1) = PsychPortAudio('Start', pahandle, 1, 0, 1); % start time
+        rest_data.data(change_idx,1) = PsychPortAudio('Start', audios.pahandle, 1, 0, 1); % start time
+
         rest_data.data(change_idx,2) = GetSecs; % end time
         rest_data.data(change_idx,3) = b; % dummy for condition
-       
-        PsychPortAudio('FillBuffer', pahandle, buffer(b));
+
+        % NOT NEEDED?
+        %PsychPortAudio('Start', audios.pahandle, 1, 0, 1); % tone of 1st trial is already in the buffer
+        
+        %PsychPortAudio('FillBuffer', pahandle, buffer(b));
+        PsychPortAudio('FillBuffer', audios.pahandle, audios.buffer(b));
         
         switch b
             case 1 %low tone => close eyes
@@ -283,7 +299,7 @@ switch scanner_mode
 end
 
 
- save(fullfile(data_path,[project_name '_' subject '_' mode_id '_rest.mat']),'rest_data');
+save(fullfile(data_path,[project_name '_' subject '_' mode_id '_rest.mat']),'rest_data');
 
 
 %% End screen 
@@ -293,7 +309,8 @@ Screen('Flip', window);
 
 %% Clean up
 % Wait for end of playback, then stop:
-PsychPortAudio('Stop', pahandle, 1);
+%PsychPortAudio('Stop', pahandle, 1);
+PsychPortAudio('Stop', audios.pahandle, 1);
 % Delete all dynamic audio buffers:
 PsychPortAudio('DeleteBuffer');
 % Close audio device, shutdown driver:

@@ -71,10 +71,15 @@ switch OS
             otherwise
                 % JG_MOD
                 %session.expPath = 'C:\Users\john_griffiths\Desktop\KCNI_EEGLab\from_ad_dropbox\TAY\EEG';
-		session.expPath = 'C:\Users\eeg_lab\Desktop\KCNI_EEG_Lab\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG';
+		%session.expPath = 'C:\Users\eeg_lab\Desktop\KCNI_EEG_Lab\kcni-eeg-lab\studies\tay-eeg\code\experiment\EEG';
+        session.expPath = 'C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\MMN';
 
         end
-        addpath('cogent2000v1.32\Toolbox');
+        %addpath('cogent2000v1.32\Toolbox');
+        %addpath('cogent2000v1.32\Toolbox');
+        addpath('C:\Users\eeg_lab\Desktop\EEG_LAB\kcni-eeg-lab\studies\tay-eeg\code\experiment\Toolboxes\cogent2000v1.32\Toolbox');
+
+        
     case 'lin'
         session.expPath = '/home/laew/prj/prssi/exp/lab/MMN';
         addpath('cogent2000v1.32/Toolbox');

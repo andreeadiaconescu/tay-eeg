@@ -39,7 +39,7 @@ expt_folder = pwd;
 eeg_folder = fullfile(expt_folder, 'EEG');
 mmn_folder = fullfile(expt_folder, 'MMN');
 rest_folder = fullfile(expt_folder, 'Rest');
-toolboxes_folder = fullfile(expt_folder, 'toolboxes');
+toolboxes_folder = fullfile(expt_folder, 'Toolboxes');
 
 addpath(genpath(mmn_folder))
 
@@ -155,11 +155,11 @@ switch ui.task
         switch ui.session
             case 'practice'
                 %COMPI_Rest_practice_DH(scanner_mode);     % JG_MOD
-                COMPI_Rest_practice_DH_eng(scanner_mode);
+                COMPI_Rest_practice_DH_eng_2(scanner_mode);
 
             case 'task'
                 %COMPI_Rest_DH(ui.subject_ID,scanner_mode);  % JG_MOD
-                COMPI_Rest_DH_eng(ui.subject_ID,scanner_mode);
+                COMPI_Rest_DH_eng_2(ui.subject_ID,scanner_mode);
     end
  
 end
