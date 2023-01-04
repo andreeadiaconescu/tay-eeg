@@ -54,11 +54,15 @@ function DH_GUI_GUIDE_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Hide panels that are not required
 set(handles.bg_run,'visible','on')
-set(handles.bg_keymode,'visible','on')
-set(handles.bg_adviser,'visible','on')
+set(handles.bg_keymode,'visible','off')
+set(handles.bg_adviser,'visible','off')
 set(handles.bg_WMMode,'visible','off')
 set(handles.bg_handedness,'visible','off')
-set(handles.check_recording,'visible','off')
+set(handles.check_recording,'visible','on')
+set(handles.bg_modality,'visible','off')
+set(handles.WM,'visible','off')
+set(handles.IOIO,'visible','off')
+
 
 % Create output variable and defaults
 handles.ui = struct;
@@ -205,24 +209,24 @@ handles.ui.task  = get(get(handles.bg_task,'SelectedObject'), 'Tag');
 guidata(hObject, handles);
 
 switch handles.ui.task
-    case 'IOIO'
-        
-        set(handles.bg_run,'visible','on')
-        set(handles.bg_keymode,'visible','on')
-        set(handles.bg_adviser,'visible','on')
-        
-        set(handles.bg_WMMode,'visible','off')
-        set(handles.bg_handedness,'visible','off')
-        
-    case 'WM'
-        
-        set(handles.bg_WMMode,'visible','on')
-        
-        set(handles.bg_run,'visible','off')
-        set(handles.bg_keymode,'visible','off')
-        set(handles.bg_handedness,'visible','off')
-         set(handles.bg_adviser,'visible','off')
-        
+%     case 'IOIO'
+%         
+%         set(handles.bg_run,'visible','on')
+%         set(handles.bg_keymode,'visible','on')
+%         set(handles.bg_adviser,'visible','on')
+%         
+%         set(handles.bg_WMMode,'visible','off')
+%         set(handles.bg_handedness,'visible','off')
+%         
+%     case 'WM'
+%         
+%         set(handles.bg_WMMode,'visible','on')
+%         
+%         set(handles.bg_run,'visible','off')
+%         set(handles.bg_keymode,'visible','off')
+%         set(handles.bg_handedness,'visible','off')
+%          set(handles.bg_adviser,'visible','off')
+%         
     case 'MMN'
         set(handles.bg_handedness,'visible','on')
         

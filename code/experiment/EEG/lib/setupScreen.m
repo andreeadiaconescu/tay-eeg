@@ -1,5 +1,6 @@
 function [screen] = setupScreen
 Screen('Preference', 'SkipSyncTests', 1); %%% CHANGE
+Screen('Preference','VisualDebugLevel', 0); %%% turn off all warnings from psychtoolbox by zheng
 
 screens = Screen('Screens');                                                % get screen numbers
 screenNumber = max(screens);                                                % draw to external screen
@@ -15,9 +16,9 @@ Screen('Flip', screen.window);
 [screenXpixels, screenYpixels] = Screen('WindowSize', screen.window);              % size of screen in pixels
 [screen.xCenter, screen.yCenter] = RectCenter(windowRect);                                % center of screen in pixels
 
-Screen('BlendFunction', screen.window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');  % set up alpha-blending for smooth (anti-aliased) lines
+%Screen('BlendFunction', screen.window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');  % set up alpha-blending for smooth (anti-aliased) lines
 
 % Hide Cursor
-HideCursor(screenNumber);
+%HideCursor(screenNumber);
 
 end

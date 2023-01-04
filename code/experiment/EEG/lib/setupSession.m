@@ -1,4 +1,4 @@
-function session = setupSession(subject, hand, OS, seqVersion, scanner_mode)
+function session = setupSession(subject, hand, base_path, seqVersion, scanner_mode)
 
 %% Get Scanner mode identifier
 switch scanner_mode
@@ -15,7 +15,8 @@ project_name = 'COMPI';
 session.subject = subject;
 session.datetime = datestr(now,30);
 folder = [project_name '_' subject];
-folder_path    = fullfile(cd,'behav_data', folder);
+output_path    = fullfile(base_path,'behav_data');
+folder_path = fullfile(output_path, folder);
 
 
 %% Create subject_folder
@@ -81,7 +82,7 @@ session.hand = hand;
 %end
 
 
-session.expPath = '..\MMN';
+session.expPath = base_path;
 
 %% set file names
 session.tone1 = 'tone1_c1_263_61Hz_70ms_duration_5ms_fadeInOut.wav';
