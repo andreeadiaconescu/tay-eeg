@@ -72,6 +72,8 @@ cedrus_handle = CedrusResponseBox('Open', 'COM3');
 
 
 %% ---------------------- set up screen -------------------------- %%
+Screen('Preference', 'SkipSyncTests', 1); %%% CHANGE
+Screen('Preference','VisualDebugLevel', 0); %%% turn off all warnings from psychtoolbox by zheng
 screens = Screen('Screens');                                                % get screen numbers
 screenNumber = max(screens);                                                % draw to external screen
 

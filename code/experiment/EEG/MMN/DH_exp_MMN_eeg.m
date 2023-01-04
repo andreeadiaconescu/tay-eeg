@@ -110,7 +110,7 @@ MMN.responses.cedrus = {}; % collecting all cedrus response box data, in
 
 %% ---------------------- start presentation -------------------------- %%
 % start screen
-Screen('TextSize', visuals.window, visuals.instrSize);
+Screen('TextSize', visuals.window, 40)% visuals.instrSize);
 MMN.startScreen.Date       = datestr(now, 30);
 MMN.startScreen.GetSecs    = GetSecs;
 MMN.startScreen.Cogent     = time;

@@ -24,6 +24,7 @@ end
 
 % JG_ADD
 %cedrus_handle = CedrusResponseBox('Open', 'COM6');
+% cedrus_handle = CedrusResponseBox('Open', 'c');
 cedrus_handle = CedrusResponseBox('Open', 'COM3');
 
 
@@ -111,6 +112,7 @@ audios = initializeSounds(audios, m);%MMN);
 
 %% Set up screen
 Screen('Preference', 'SkipSyncTests', 1) %disable synchronization test (unrecommendated)
+Screen('Preference','VisualDebugLevel', 0); %%% turn off all warnings from psychtoolbox by zheng
 screens = Screen('Screens');                                                % get screen numbers
 screenNumber = max(screens);                                                % draw to external screen
 

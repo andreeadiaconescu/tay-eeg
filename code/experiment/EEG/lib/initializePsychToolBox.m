@@ -1,6 +1,6 @@
 function initializePsychToolBox
 
-PsychDefaultSetup(2);
-PsychImaging('PrepareConfiguration');
+PsychDefaultSetup(1); %zheng change from 2 to 1
+%PsychImaging('PrepareConfiguration');
 
 t = GetSecs;    

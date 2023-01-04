@@ -3,7 +3,7 @@ function visuals = createVisualStimuli(screen)
 visuals.window = screen.window;
 
 % text (instructions)
-visuals.instrSize = 15; %25 CHANGED to fit things on screen
+visuals.instrSize = 25; %25 CHANGED to fit things on screen
 visuals.instrText = 'Please indicate, on which side the square opens. \n\n\n\n Please wait to begin.';
 visuals.abortText = 'Cancel';
 visuals.waitText = 'Please wait...';
@@ -25,7 +25,7 @@ visuals.openLeftCoords = CenterRectOnPointd(visuals.fixRect, screen.xCenter - vi
 visuals.openRightCoords = CenterRectOnPointd(visuals.fixRect, screen.xCenter + visuals.openDist, screen.yCenter);
 
 % text (training)
-visuals.instrSize = 18; % 30; CHANGED
+visuals.trainSize = 30; % 30; CHANGED by zheng
 visuals.trainingStart = 'Please click on any key to begin ...';
 visuals.trainingContinue = 'Please click on any key to continue ...';
 visuals.trainingLeftpress = 'Click on the left arrow.';
@@ -68,8 +68,7 @@ visuals.tone01 = ['Tone test. \n\n' ...
     'You might hear 10 short tones.' ];
 
 visuals.tone02 = ['End of tone test. \n\n\n' ...
-    'If you cannot hear the tones \n\n' ...
-    'please inform your experimenter. \n\n\n' ...
+    'If you cannot hear the tones please inform your experimenter. \n\n\n' ...
     'Please note: You can ignore the tones. \n\n' ...
     'They do not relate to the changes in the square shape. \n\n' ...
     'Please respond to the shape changes as quickly and as accurately as possible.'];

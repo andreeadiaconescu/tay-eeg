@@ -65,6 +65,7 @@ if scanner_mode == 3
     sp.sendTrigger(0);
 end
 
+
 %% ------------------------- initializing ----------------------------- %%
 
 cd(session.expPath)
@@ -72,8 +73,11 @@ disp('This is the MMN-volatility experiment');
 disp(['Instructions and Training for Subject ' subject]);
 
 initializePsychToolBox;
+
 [screen] = setupScreen;  
- 
+%Screen('Preference', 'SkipSyncTests', 1) %disable synchronization test (unrecommendated)
+%screen = Screen('Screens');
+
 visuals =  createVisualStimuli(screen);
 
 config_keyboard (5,1,'nonexclusive'); % Set up key board
@@ -95,13 +99,15 @@ MMN.responses.cedrus = {}; % collecting all cedrus response box data, in
 
 %% ---------------------- start presentation -------------------------- %%
 
+
 Screen('TextSize', visuals.window, visuals.instrSize);
+%Screen('TextFont',  visuals.window, 'Ariel')
 MMN.startScreen = datestr(now, 30);
 
 % welcome screen
 DrawFormattedText(visuals.window, visuals.training00, 'center', 'center', screen.black);
 DrawFormattedText(visuals.window, visuals.trainingStart, 'center', 1000, screen.black);
-Screen('Flip', visuals.window);
+Screen('Flip', visuals.window); 
 %wait2(2000);
 
 %wait for the scanner and save the starting time
