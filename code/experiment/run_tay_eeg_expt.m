@@ -64,53 +64,23 @@ if resetup_psychtoolbox == 1
 end
 
 
+
 %% cd EEG folder
-cd(eeg_folder);
+% cd(eeg_folder)
 
 %% Get User data
 ui = DH_GUI_GUIDE();
 
 
 %% Launch task
-switch ui.modality
-    case 'Behavior'
-        scanner_mode = 0;
-    case 'fMRI'
-        scanner_mode = 1;
-    case 'EEG'
-        scanner_mode = 3;
-        
-end
+
+scanner_mode = 3; % changed by zheng
+
 
 
 % ------------------------- IOIO -------------------------
 switch ui.task
-    case 'IOIO'
-        addpath(genpath('IOIO'));
-        try
-            cd 'IOIO'
-        end
-        
-        switch ui.session
-            case 'practice'
-                SLadv_practice(ui.subject_ID,ui.run,scanner_mode,ui.key_mode);
-            case 'task'
-                SLadv_task(ui.subject_ID,ui.run,scanner_mode,ui.key_mode,ui.adviser);
-        end
-        
-        % ------------------------- WM -------------------------
-    case 'WM'
-        addpath(genpath('WM'));
-        try
-            cd 'WM'
-        end
-        switch ui.session
-            case 'practice'
-                wm_practice(ui.subject_ID, ui.wm_task);
-            case 'task'
-                wm_task(ui.subject_ID, ui.wm_task, scanner_mode);
-        end
-        
+    
         % ------------------------- MMN -------------------------
     case 'MMN'
         addpath(genpath('MMN'));
